@@ -168,17 +168,17 @@ export default function Progress({ userProgress }: ProgressProps) {
   const maxValue = Math.max(...weeklyData);
 
   return (
-    <div>
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">Progress Pembelajaran</h1>
-        <p className="text-gray-600">Pantau perkembangan belajar bahasa Arab Anda</p>
+    <div className="p-4 lg:p-6">
+      <div className="mb-6 lg:mb-8">
+        <h1 className="text-2xl lg:text-3xl font-bold text-gray-800 mb-2">Progress Pembelajaran</h1>
+        <p className="text-sm lg:text-base text-gray-600">Pantau perkembangan belajar bahasa Arab Anda</p>
       </div>
 
       {/* Tab Navigation */}
-      <div className="flex gap-4 mb-6">
+      <div className="flex flex-col sm:flex-row gap-2 lg:gap-4 mb-6 overflow-x-auto">
         <button
           onClick={() => setSelectedTab('overview')}
-          className={`px-6 py-3 rounded-lg font-semibold transition-colors ${
+          className={`px-4 lg:px-6 py-2 lg:py-3 rounded-lg text-sm lg:text-base font-semibold transition-colors whitespace-nowrap min-h-[44px] active:scale-95 ${
             selectedTab === 'overview'
               ? 'bg-indigo-600 text-white'
               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
@@ -188,7 +188,7 @@ export default function Progress({ userProgress }: ProgressProps) {
         </button>
         <button
           onClick={() => setSelectedTab('achievements')}
-          className={`px-6 py-3 rounded-lg font-semibold transition-colors ${
+          className={`px-4 lg:px-6 py-2 lg:py-3 rounded-lg text-sm lg:text-base font-semibold transition-colors whitespace-nowrap min-h-[44px] active:scale-95 ${
             selectedTab === 'achievements'
               ? 'bg-indigo-600 text-white'
               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
@@ -198,7 +198,7 @@ export default function Progress({ userProgress }: ProgressProps) {
         </button>
         <button
           onClick={() => setSelectedTab('statistics')}
-          className={`px-6 py-3 rounded-lg font-semibold transition-colors ${
+          className={`px-4 lg:px-6 py-2 lg:py-3 rounded-lg text-sm lg:text-base font-semibold transition-colors whitespace-nowrap min-h-[44px] active:scale-95 ${
             selectedTab === 'statistics'
               ? 'bg-indigo-600 text-white'
               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
@@ -209,9 +209,9 @@ export default function Progress({ userProgress }: ProgressProps) {
       </div>
 
       {selectedTab === 'overview' && (
-        <div className="space-y-8">
+        <div className="space-y-6 lg:space-y-8">
           {/* Quick Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 lg:gap-4">
             {statistics.slice(0, 4).map((stat) => {
               const Icon = stat.icon;
               return (
@@ -219,32 +219,32 @@ export default function Progress({ userProgress }: ProgressProps) {
                   key={stat.label}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-white rounded-xl shadow-lg p-6"
+                  className="bg-white rounded-xl shadow-lg p-4 lg:p-6"
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <Icon className={`w-8 h-8 ${stat.color}`} />
+                    <Icon className={`w-6 h-6 lg:w-8 lg:h-8 ${stat.color}`} />
                     {stat.trend && (
-                      <span className={`text-sm font-semibold ${
+                      <span className={`text-xs lg:text-sm font-semibold ${
                         stat.trend > 0 ? 'text-green-500' : 'text-red-500'
                       }`}>
                         {stat.trend > 0 ? '+' : ''}{stat.trend}%
                       </span>
                     )}
                   </div>
-                  <p className="text-2xl font-bold text-gray-800">{stat.value}</p>
-                  <p className="text-sm text-gray-600">{stat.label}</p>
+                  <p className="text-xl lg:text-2xl font-bold text-gray-800">{stat.value}</p>
+                  <p className="text-xs lg:text-sm text-gray-600">{stat.label}</p>
                 </motion.div>
               );
             })}
           </div>
 
           {/* Weekly Activity */}
-          <div className="bg-white rounded-xl shadow-lg p-6">
-            <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <BarChart3 className="w-6 h-6" />
+          <div className="bg-white rounded-xl shadow-lg p-4 lg:p-6">
+            <h2 className="text-lg lg:text-xl font-bold mb-4 lg:mb-6 flex items-center gap-2">
+              <BarChart3 className="w-5 h-5 lg:w-6 lg:h-6" />
               Aktivitas Minggu Ini
             </h2>
-            <div className="flex items-end justify-between gap-2 h-40">
+            <div className="flex items-end justify-between gap-1 lg:gap-2 h-32 lg:h-40">
               {weeklyData.map((value, index) => (
                 <div key={index} className="flex-1 flex flex-col items-center gap-2">
                   <motion.div
@@ -264,34 +264,34 @@ export default function Progress({ userProgress }: ProgressProps) {
           </div>
 
           {/* Learning Path */}
-          <div className="bg-white rounded-xl shadow-lg p-6">
-            <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <Target className="w-6 h-6" />
+          <div className="bg-white rounded-xl shadow-lg p-4 lg:p-6">
+            <h2 className="text-lg lg:text-xl font-bold mb-4 lg:mb-6 flex items-center gap-2">
+              <Target className="w-5 h-5 lg:w-6 lg:h-6" />
               Jalur Pembelajaran
             </h2>
             <div className="relative">
               {/* Progress Line */}
-              <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-gray-300"></div>
+              <div className="absolute left-4 lg:left-5 top-0 bottom-0 w-0.5 bg-gray-300"></div>
               
               {learningPath.map((step, index) => (
-                <div key={index} className="relative flex items-center gap-4 mb-6 last:mb-0">
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center z-10 ${
+                <div key={index} className="relative flex items-center gap-3 lg:gap-4 mb-4 lg:mb-6 last:mb-0">
+                  <div className={`w-8 h-8 lg:w-10 lg:h-10 rounded-full flex items-center justify-center z-10 flex-shrink-0 ${
                     step.completed ? 'bg-green-500' :
                     step.current ? 'bg-indigo-600 animate-pulse' :
                     'bg-gray-300'
                   }`}>
                     {step.completed ? (
-                      <CheckCircle className="w-6 h-6 text-white" />
+                      <CheckCircle className="w-4 h-4 lg:w-6 lg:h-6 text-white" />
                     ) : (
-                      <span className="text-white font-bold">{index + 1}</span>
+                      <span className="text-white text-sm lg:text-base font-bold">{index + 1}</span>
                     )}
                   </div>
-                  <div className={`flex-1 p-4 rounded-lg ${
+                  <div className={`flex-1 p-3 lg:p-4 rounded-lg ${
                     step.current ? 'bg-indigo-50 border-2 border-indigo-300' :
                     step.completed ? 'bg-green-50' :
                     'bg-gray-50'
                   }`}>
-                    <p className={`font-semibold ${
+                    <p className={`text-sm lg:text-base font-semibold ${
                       step.current ? 'text-indigo-700' :
                       step.completed ? 'text-green-700' :
                       'text-gray-600'
@@ -299,10 +299,10 @@ export default function Progress({ userProgress }: ProgressProps) {
                       {step.name}
                     </p>
                     {step.current && (
-                      <p className="text-sm text-indigo-600 mt-1">Sedang dipelajari</p>
+                      <p className="text-xs lg:text-sm text-indigo-600 mt-1">Sedang dipelajari</p>
                     )}
                     {step.completed && (
-                      <p className="text-sm text-green-600 mt-1">Selesai</p>
+                      <p className="text-xs lg:text-sm text-green-600 mt-1">Selesai</p>
                     )}
                   </div>
                 </div>
@@ -313,7 +313,7 @@ export default function Progress({ userProgress }: ProgressProps) {
       )}
 
       {selectedTab === 'achievements' && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
           {achievements.map((achievement) => {
             const Icon = achievement.icon;
             const progressPercentage = (achievement.progress / achievement.total) * 100;
@@ -327,22 +327,22 @@ export default function Progress({ userProgress }: ProgressProps) {
                   achievement.unlocked ? 'ring-2 ring-yellow-400' : ''
                 }`}
               >
-                <div className={`bg-gradient-to-r ${achievement.color} p-6 text-white`}>
+                <div className={`bg-gradient-to-r ${achievement.color} p-4 lg:p-6 text-white`}>
                   <div className="flex items-center justify-between mb-3">
-                    <Icon className="w-10 h-10" />
+                    <Icon className="w-8 h-8 lg:w-10 lg:h-10" />
                     {achievement.unlocked && (
-                      <div className="bg-white/20 backdrop-blur rounded-full p-2">
-                        <CheckCircle className="w-6 h-6" />
+                      <div className="bg-white/20 backdrop-blur rounded-full p-1.5 lg:p-2">
+                        <CheckCircle className="w-5 h-5 lg:w-6 lg:h-6" />
                       </div>
                     )}
                   </div>
-                  <h3 className="text-lg font-bold mb-1">{achievement.title}</h3>
-                  <p className="text-sm opacity-90">{achievement.description}</p>
+                  <h3 className="text-base lg:text-lg font-bold mb-1">{achievement.title}</h3>
+                  <p className="text-xs lg:text-sm opacity-90">{achievement.description}</p>
                 </div>
-                <div className="p-4">
+                <div className="p-3 lg:p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm text-gray-600">Progress</span>
-                    <span className="text-sm font-semibold">
+                    <span className="text-xs lg:text-sm text-gray-600">Progress</span>
+                    <span className="text-xs lg:text-sm font-semibold">
                       {achievement.progress}/{achievement.total}
                     </span>
                   </div>
@@ -364,23 +364,23 @@ export default function Progress({ userProgress }: ProgressProps) {
       )}
 
       {selectedTab === 'statistics' && (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           {/* Detailed Stats */}
-          <div className="bg-white rounded-xl shadow-lg p-6">
-            <h2 className="text-xl font-bold mb-6">Statistik Detail</h2>
-            <div className="space-y-4">
+          <div className="bg-white rounded-xl shadow-lg p-4 lg:p-6">
+            <h2 className="text-lg lg:text-xl font-bold mb-4 lg:mb-6">Statistik Detail</h2>
+            <div className="space-y-3 lg:space-y-4">
               {statistics.map((stat) => {
                 const Icon = stat.icon;
                 return (
-                  <div key={stat.label} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                    <div className="flex items-center gap-3">
-                      <Icon className={`w-6 h-6 ${stat.color}`} />
-                      <span className="font-medium">{stat.label}</span>
+                  <div key={stat.label} className="flex items-center justify-between p-3 lg:p-4 bg-gray-50 rounded-lg">
+                    <div className="flex items-center gap-2 lg:gap-3">
+                      <Icon className={`w-5 h-5 lg:w-6 lg:h-6 ${stat.color}`} />
+                      <span className="text-sm lg:text-base font-medium">{stat.label}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-xl font-bold">{stat.value}</span>
+                      <span className="text-lg lg:text-xl font-bold">{stat.value}</span>
                       {stat.trend && (
-                        <span className={`text-sm ${
+                        <span className={`text-xs lg:text-sm ${
                           stat.trend > 0 ? 'text-green-500' : 'text-red-500'
                         }`}>
                           {stat.trend > 0 ? '↑' : '↓'} {Math.abs(stat.trend)}%
@@ -394,12 +394,12 @@ export default function Progress({ userProgress }: ProgressProps) {
           </div>
 
           {/* Calendar Heatmap */}
-          <div className="bg-white rounded-xl shadow-lg p-6">
-            <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <Calendar className="w-6 h-6" />
+          <div className="bg-white rounded-xl shadow-lg p-4 lg:p-6">
+            <h2 className="text-lg lg:text-xl font-bold mb-4 lg:mb-6 flex items-center gap-2">
+              <Calendar className="w-5 h-5 lg:w-6 lg:h-6" />
               Aktivitas 30 Hari Terakhir
             </h2>
-            <div className="grid grid-cols-7 gap-2">
+            <div className="grid grid-cols-7 gap-1 lg:gap-2">
               {[...Array(30)].map((_, index) => {
                 const intensity = Math.random();
                 return (
@@ -417,14 +417,14 @@ export default function Progress({ userProgress }: ProgressProps) {
                 );
               })}
             </div>
-            <div className="flex items-center gap-4 mt-4 text-xs text-gray-600">
+            <div className="flex items-center gap-3 lg:gap-4 mt-4 text-xs text-gray-600">
               <span>Kurang</span>
               <div className="flex gap-1">
-                <div className="w-3 h-3 bg-gray-100 rounded"></div>
-                <div className="w-3 h-3 bg-green-200 rounded"></div>
-                <div className="w-3 h-3 bg-green-300 rounded"></div>
-                <div className="w-3 h-3 bg-green-400 rounded"></div>
-                <div className="w-3 h-3 bg-green-500 rounded"></div>
+                <div className="w-2.5 h-2.5 lg:w-3 lg:h-3 bg-gray-100 rounded"></div>
+                <div className="w-2.5 h-2.5 lg:w-3 lg:h-3 bg-green-200 rounded"></div>
+                <div className="w-2.5 h-2.5 lg:w-3 lg:h-3 bg-green-300 rounded"></div>
+                <div className="w-2.5 h-2.5 lg:w-3 lg:h-3 bg-green-400 rounded"></div>
+                <div className="w-2.5 h-2.5 lg:w-3 lg:h-3 bg-green-500 rounded"></div>
               </div>
               <span>Lebih</span>
             </div>

@@ -22,55 +22,55 @@ export default function Tashrif({ updateProgress }: TashrifProps) {
   };
 
   return (
-    <div>
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">Tashrif (التصريف)</h1>
-        <p className="text-gray-600">Pelajari konjugasi kata kerja dan pola-pola tashrif dalam bahasa Arab</p>
+    <div className="p-4 lg:p-6">
+      <div className="mb-6 lg:mb-8">
+        <h1 className="text-2xl lg:text-3xl font-bold text-gray-800 mb-2">Tashrif (التصريف)</h1>
+        <p className="text-sm lg:text-base text-gray-600">Pelajari konjugasi kata kerja dan pola-pola tashrif dalam bahasa Arab</p>
       </div>
 
       {/* Tab Navigation */}
-      <div className="flex gap-4 mb-6">
+      <div className="flex flex-col sm:flex-row gap-2 lg:gap-4 mb-6 overflow-x-auto">
         <button
           onClick={() => setActiveTab('patterns')}
-          className={`px-6 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2 ${
+          className={`px-4 lg:px-6 py-2 lg:py-3 rounded-lg text-sm lg:text-base font-semibold transition-colors flex items-center gap-2 whitespace-nowrap min-h-[44px] active:scale-95 ${
             activeTab === 'patterns'
               ? 'bg-indigo-600 text-white'
               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
           }`}
         >
-          <BookOpen className="w-5 h-5" />
+          <BookOpen className="w-4 h-4 lg:w-5 lg:h-5" />
           Pola Konjugasi
         </button>
         <button
           onClick={() => setActiveTab('forms')}
-          className={`px-6 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2 ${
+          className={`px-4 lg:px-6 py-2 lg:py-3 rounded-lg text-sm lg:text-base font-semibold transition-colors flex items-center gap-2 whitespace-nowrap min-h-[44px] active:scale-95 ${
             activeTab === 'forms'
               ? 'bg-indigo-600 text-white'
               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
           }`}
         >
-          <ChevronRight className="w-5 h-5" />
+          <ChevronRight className="w-4 h-4 lg:w-5 lg:h-5" />
           10 Bentuk Wazan
         </button>
         <button
           onClick={() => setActiveTab('tables')}
-          className={`px-6 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2 ${
+          className={`px-4 lg:px-6 py-2 lg:py-3 rounded-lg text-sm lg:text-base font-semibold transition-colors flex items-center gap-2 whitespace-nowrap min-h-[44px] active:scale-95 ${
             activeTab === 'tables'
               ? 'bg-indigo-600 text-white'
               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
           }`}
         >
-          <Table className="w-5 h-5" />
+          <Table className="w-4 h-4 lg:w-5 lg:h-5" />
           Tabel Rumus
         </button>
       </div>
 
       {activeTab === 'patterns' && (
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-8">
           {/* Pattern Selector */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-xl shadow-lg p-6">
-              <h2 className="text-xl font-bold mb-4">Pilih Kata Kerja</h2>
+            <div className="bg-white rounded-xl shadow-lg p-4 lg:p-6">
+              <h2 className="text-lg lg:text-xl font-bold mb-4">Pilih Kata Kerja</h2>
               <div className="space-y-3">
                 {verbPatterns.map((pattern) => (
                   <button
@@ -79,19 +79,19 @@ export default function Tashrif({ updateProgress }: TashrifProps) {
                       setSelectedPattern(pattern);
                       updateProgress(`tashrif-${pattern.id}`, 10);
                     }}
-                    className={`w-full text-left p-4 rounded-lg transition-all ${
+                    className={`w-full text-left p-3 lg:p-4 rounded-lg transition-all active:scale-95 ${
                       selectedPattern.id === pattern.id
                         ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg'
                         : 'bg-gray-100 hover:bg-gray-200 text-gray-800'
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-2xl arabic-text mb-1">{pattern.patternAr}</p>
-                        <p className="text-sm opacity-80">{pattern.meaning}</p>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-xl lg:text-2xl arabic-text mb-1 truncate">{pattern.patternAr}</p>
+                        <p className="text-xs lg:text-sm opacity-80">{pattern.meaning}</p>
                       </div>
                       <Volume2 
-                        className="w-5 h-5 opacity-60 hover:opacity-100"
+                        className="w-4 h-4 lg:w-5 lg:h-5 opacity-60 hover:opacity-100 flex-shrink-0 ml-2"
                         onClick={(e) => {
                           e.stopPropagation();
                           speakArabic(pattern.patternAr);
@@ -111,104 +111,104 @@ export default function Tashrif({ updateProgress }: TashrifProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
-              className="bg-white rounded-xl shadow-lg p-8"
+              className="bg-white rounded-xl shadow-lg p-4 lg:p-8"
             >
               {/* Header */}
-              <div className="text-center mb-8">
-                <h2 className="text-5xl arabic-text text-indigo-600 mb-3">
+              <div className="text-center mb-6 lg:mb-8">
+                <h2 className="text-3xl lg:text-5xl arabic-text text-indigo-600 mb-3">
                   {selectedPattern.patternAr}
                 </h2>
-                <p className="text-xl font-semibold text-gray-800 mb-2">
+                <p className="text-lg lg:text-xl font-semibold text-gray-800 mb-2">
                   Makna: {selectedPattern.meaning}
                 </p>
-                <p className="text-gray-600">
+                <p className="text-sm lg:text-base text-gray-600">
                   Akar kata: {selectedPattern.root}
                 </p>
               </div>
 
               {/* Forms */}
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-                <div className="bg-blue-50 p-4 rounded-lg text-center">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 lg:gap-4 mb-6 lg:mb-8">
+                <div className="bg-blue-50 p-3 lg:p-4 rounded-lg text-center">
                   <p className="text-xs text-blue-600 mb-1">Fi'il Madhi</p>
-                  <p className="text-2xl arabic-text text-blue-700">{selectedPattern.failMadi}</p>
+                  <p className="text-lg lg:text-2xl arabic-text text-blue-700">{selectedPattern.failMadi}</p>
                 </div>
-                <div className="bg-green-50 p-4 rounded-lg text-center">
+                <div className="bg-green-50 p-3 lg:p-4 rounded-lg text-center">
                   <p className="text-xs text-green-600 mb-1">Fi'il Mudhari'</p>
-                  <p className="text-2xl arabic-text text-green-700">{selectedPattern.failMudhari}</p>
+                  <p className="text-lg lg:text-2xl arabic-text text-green-700">{selectedPattern.failMudhari}</p>
                 </div>
-                <div className="bg-purple-50 p-4 rounded-lg text-center">
+                <div className="bg-purple-50 p-3 lg:p-4 rounded-lg text-center">
                   <p className="text-xs text-purple-600 mb-1">Fi'il Amr</p>
-                  <p className="text-2xl arabic-text text-purple-700">{selectedPattern.failAmr}</p>
+                  <p className="text-lg lg:text-2xl arabic-text text-purple-700">{selectedPattern.failAmr}</p>
                 </div>
-                <div className="bg-orange-50 p-4 rounded-lg text-center">
+                <div className="bg-orange-50 p-3 lg:p-4 rounded-lg text-center">
                   <p className="text-xs text-orange-600 mb-1">Ism Fa'il</p>
-                  <p className="text-2xl arabic-text text-orange-700">{selectedPattern.ismFail}</p>
+                  <p className="text-lg lg:text-2xl arabic-text text-orange-700">{selectedPattern.ismFail}</p>
                 </div>
-                <div className="bg-red-50 p-4 rounded-lg text-center">
+                <div className="bg-red-50 p-3 lg:p-4 rounded-lg text-center">
                   <p className="text-xs text-red-600 mb-1">Ism Maf'ul</p>
-                  <p className="text-2xl arabic-text text-red-700">{selectedPattern.ismMaful}</p>
+                  <p className="text-lg lg:text-2xl arabic-text text-red-700">{selectedPattern.ismMaful}</p>
                 </div>
-                <div className="bg-indigo-50 p-4 rounded-lg text-center">
+                <div className="bg-indigo-50 p-3 lg:p-4 rounded-lg text-center">
                   <p className="text-xs text-indigo-600 mb-1">Masdar</p>
-                  <p className="text-2xl arabic-text text-indigo-700">{selectedPattern.masdar}</p>
+                  <p className="text-lg lg:text-2xl arabic-text text-indigo-700">{selectedPattern.masdar}</p>
                 </div>
               </div>
 
               {/* Conjugation Table */}
-              <div className="mb-8">
-                <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                  <User className="w-5 h-5" />
+              <div className="mb-6 lg:mb-8">
+                <h3 className="text-base lg:text-lg font-bold mb-4 flex items-center gap-2">
+                  <User className="w-4 h-4 lg:w-5 lg:h-5" />
                   Tabel Konjugasi
                 </h3>
                 <div className="overflow-x-auto">
-                  <table className="w-full border-collapse">
+                  <table className="w-full border-collapse min-w-[800px]">
                     <thead>
                       <tr className="bg-gray-100">
-                        <th className="border p-3 text-left">Kata Ganti</th>
-                        <th className="border p-3 text-center">Fi'il Madhi</th>
-                        <th className="border p-3 text-center">Fi'il Mudhari'</th>
-                        <th className="border p-3 text-center">Fi'il Mustaqbal</th>
-                        <th className="border p-3 text-center">Fi'il Amr</th>
+                        <th className="border p-2 lg:p-3 text-left text-xs lg:text-sm">Kata Ganti</th>
+                        <th className="border p-2 lg:p-3 text-center text-xs lg:text-sm">Fi'il Madhi</th>
+                        <th className="border p-2 lg:p-3 text-center text-xs lg:text-sm">Fi'il Mudhari'</th>
+                        <th className="border p-2 lg:p-3 text-center text-xs lg:text-sm">Fi'il Mustaqbal</th>
+                        <th className="border p-2 lg:p-3 text-center text-xs lg:text-sm">Fi'il Amr</th>
                       </tr>
                     </thead>
                     <tbody>
                       {selectedPattern.conjugations.map((conj, index) => (
                         <tr key={index} className="hover:bg-gray-50">
-                          <td className="border p-3">
+                          <td className="border p-2 lg:p-3">
                             <div>
-                              <p className="font-medium">{conj.pronoun}</p>
-                              <p className="text-sm arabic-text text-gray-600">{conj.pronounAr}</p>
+                              <p className="text-xs lg:text-sm font-medium">{conj.pronoun}</p>
+                              <p className="text-xs arabic-text text-gray-600">{conj.pronounAr}</p>
                             </div>
                           </td>
-                          <td className="border p-3 text-center">
+                          <td className="border p-2 lg:p-3 text-center">
                             <button
                               onClick={() => speakArabic(conj.past)}
-                              className="text-xl arabic-text text-indigo-600 hover:text-indigo-800"
+                              className="text-base lg:text-xl arabic-text text-indigo-600 hover:text-indigo-800 active:scale-95"
                             >
                               {conj.past}
                             </button>
                           </td>
-                          <td className="border p-3 text-center">
+                          <td className="border p-2 lg:p-3 text-center">
                             <button
                               onClick={() => speakArabic(conj.present)}
-                              className="text-xl arabic-text text-green-600 hover:text-green-800"
+                              className="text-base lg:text-xl arabic-text text-green-600 hover:text-green-800 active:scale-95"
                             >
                               {conj.present}
                             </button>
                           </td>
-                          <td className="border p-3 text-center">
+                          <td className="border p-2 lg:p-3 text-center">
                             <button
                               onClick={() => speakArabic(conj.future)}
-                              className="text-xl arabic-text text-blue-600 hover:text-blue-800"
+                              className="text-base lg:text-xl arabic-text text-blue-600 hover:text-blue-800 active:scale-95"
                             >
                               {conj.future}
                             </button>
                           </td>
-                          <td className="border p-3 text-center">
+                          <td className="border p-2 lg:p-3 text-center">
                             {conj.imperative && (
                               <button
                                 onClick={() => speakArabic(conj.imperative!)}
-                                className="text-xl arabic-text text-purple-600 hover:text-purple-800"
+                                className="text-base lg:text-xl arabic-text text-purple-600 hover:text-purple-800 active:scale-95"
                               >
                                 {conj.imperative}
                               </button>
@@ -223,26 +223,26 @@ export default function Tashrif({ updateProgress }: TashrifProps) {
 
               {/* Examples */}
               <div>
-                <h3 className="text-lg font-bold mb-4">Contoh Penggunaan</h3>
+                <h3 className="text-base lg:text-lg font-bold mb-4">Contoh Penggunaan</h3>
                 <div className="space-y-3">
                   {selectedPattern.examples.map((example, index) => (
-                    <div key={index} className="bg-gray-50 p-4 rounded-lg flex items-center justify-between">
-                      <div>
-                        <p className="text-xl arabic-text text-indigo-600 mb-1">
+                    <div key={index} className="bg-gray-50 p-3 lg:p-4 rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                      <div className="flex-1">
+                        <p className="text-base lg:text-xl arabic-text text-indigo-600 mb-1">
                           {example.arabic}
                         </p>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-xs lg:text-sm text-gray-600">
                           {example.transliteration}
                         </p>
-                        <p className="text-gray-700 mt-1">
+                        <p className="text-sm lg:text-base text-gray-700 mt-1">
                           "{example.indonesian}"
                         </p>
                       </div>
                       <button
                         onClick={() => speakArabic(example.arabic)}
-                        className="p-2 bg-indigo-100 text-indigo-600 rounded-lg hover:bg-indigo-200"
+                        className="p-2 bg-indigo-100 text-indigo-600 rounded-lg hover:bg-indigo-200 min-w-[44px] min-h-[44px] active:scale-95 self-start sm:self-center"
                       >
-                        <Volume2 className="w-5 h-5" />
+                        <Volume2 className="w-4 h-4 lg:w-5 lg:h-5" />
                       </button>
                     </div>
                   ))}
@@ -254,32 +254,32 @@ export default function Tashrif({ updateProgress }: TashrifProps) {
       )}
 
       {activeTab === 'forms' && (
-        <div className="bg-white rounded-xl shadow-lg p-8">
-          <h2 className="text-2xl font-bold mb-6">10 Bentuk Wazan (الأوزان)</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="bg-white rounded-xl shadow-lg p-4 lg:p-8">
+          <h2 className="text-xl lg:text-2xl font-bold mb-4 lg:mb-6">10 Bentuk Wazan (الأوزان)</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
             {verbForms.map((form) => (
               <motion.div
                 key={form.id}
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-6 hover:shadow-lg transition-shadow"
+                className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-4 lg:p-6 hover:shadow-lg transition-shadow"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <h3 className="font-bold text-lg mb-1">{form.name}</h3>
-                    <p className="text-sm text-gray-600">{form.nameAr}</p>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-bold text-base lg:text-lg mb-1">{form.name}</h3>
+                    <p className="text-xs lg:text-sm text-gray-600">{form.nameAr}</p>
                   </div>
                   <button
                     onClick={() => speakArabic(form.formula)}
-                    className="p-2 bg-white rounded-lg shadow hover:shadow-md transition-shadow"
+                    className="p-2 bg-white rounded-lg shadow hover:shadow-md transition-shadow min-w-[44px] min-h-[44px] active:scale-95 flex-shrink-0"
                   >
                     <Volume2 className="w-4 h-4 text-indigo-600" />
                   </button>
                 </div>
                 <div className="text-center mb-4">
-                  <p className="text-3xl arabic-text text-indigo-600">{form.formula}</p>
+                  <p className="text-2xl lg:text-3xl arabic-text text-indigo-600">{form.formula}</p>
                 </div>
-                <p className="text-sm text-gray-700">{form.description}</p>
+                <p className="text-xs lg:text-sm text-gray-700">{form.description}</p>
               </motion.div>
             ))}
           </div>
@@ -287,18 +287,18 @@ export default function Tashrif({ updateProgress }: TashrifProps) {
       )}
 
       {activeTab === 'tables' && (
-        <div className="space-y-8">
+        <div className="space-y-6 lg:space-y-8">
           {/* Tashrif Formula Table */}
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <h2 className="text-2xl font-bold mb-2">{tasrifTable.title}</h2>
-            <p className="text-gray-600 mb-6">{tasrifTable.description}</p>
+          <div className="bg-white rounded-xl shadow-lg p-4 lg:p-8">
+            <h2 className="text-xl lg:text-2xl font-bold mb-2">{tasrifTable.title}</h2>
+            <p className="text-sm lg:text-base text-gray-600 mb-4 lg:mb-6">{tasrifTable.description}</p>
             
             <div className="overflow-x-auto">
-              <table className="w-full border-collapse">
+              <table className="w-full border-collapse min-w-[600px]">
                 <thead>
                   <tr className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
                     {tasrifTable.headers.map((header, index) => (
-                      <th key={index} className="border border-indigo-400 p-3 text-center">
+                      <th key={index} className="border border-indigo-400 p-2 lg:p-3 text-center text-xs lg:text-sm">
                         {header}
                       </th>
                     ))}
@@ -308,8 +308,8 @@ export default function Tashrif({ updateProgress }: TashrifProps) {
                   {tasrifTable.rows.map((row, index) => (
                     <tr key={index} className="hover:bg-gray-50">
                       {row.map((cell, cellIndex) => (
-                        <td key={cellIndex} className="border p-3 text-center">
-                          <span className="arabic-text text-lg">{cell}</span>
+                        <td key={cellIndex} className="border p-2 lg:p-3 text-center">
+                          <span className="arabic-text text-sm lg:text-lg">{cell}</span>
                         </td>
                       ))}
                     </tr>
@@ -320,19 +320,19 @@ export default function Tashrif({ updateProgress }: TashrifProps) {
           </div>
 
           {/* Pronoun Table */}
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <h2 className="text-2xl font-bold mb-2">{pronounTable.title}</h2>
-            <p className="text-gray-600 mb-6">{pronounTable.description}</p>
+          <div className="bg-white rounded-xl shadow-lg p-4 lg:p-8">
+            <h2 className="text-xl lg:text-2xl font-bold mb-2">{pronounTable.title}</h2>
+            <p className="text-sm lg:text-base text-gray-600 mb-4 lg:mb-6">{pronounTable.description}</p>
             
             {pronounTable.categories.map((category, catIndex) => (
-              <div key={catIndex} className="mb-8">
-                <h3 className="text-lg font-bold mb-4 text-indigo-600">{category.name}</h3>
+              <div key={catIndex} className="mb-6 lg:mb-8">
+                <h3 className="text-base lg:text-lg font-bold mb-4 text-indigo-600">{category.name}</h3>
                 <div className="overflow-x-auto">
-                  <table className="w-full border-collapse">
+                  <table className="w-full border-collapse min-w-[500px]">
                     <thead>
                       <tr className="bg-gray-100">
                         {pronounTable.headers.map((header, index) => (
-                          <th key={index} className="border p-3 text-center">
+                          <th key={index} className="border p-2 lg:p-3 text-center text-xs lg:text-sm">
                             {header}
                           </th>
                         ))}
@@ -342,8 +342,8 @@ export default function Tashrif({ updateProgress }: TashrifProps) {
                       {category.rows.map((row, index) => (
                         <tr key={index} className="hover:bg-gray-50">
                           {row.map((cell, cellIndex) => (
-                            <td key={cellIndex} className="border p-3 text-center">
-                              <span className={cellIndex > 0 ? "arabic-text text-lg" : ""}>
+                            <td key={cellIndex} className="border p-2 lg:p-3 text-center">
+                              <span className={cellIndex > 0 ? "arabic-text text-sm lg:text-lg" : "text-xs lg:text-sm"}>
                                 {cell}
                               </span>
                             </td>

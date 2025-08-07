@@ -38,15 +38,15 @@ export default function Vocabulary({ updateProgress }: VocabularyProps) {
   };
 
   return (
-    <div>
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">Kosakata Bahasa Arab</h1>
-        <p className="text-gray-600">Pelajari kosakata dengan kategori dan tingkat kesulitan</p>
+    <div className="p-4 lg:p-6">
+      <div className="mb-6 lg:mb-8">
+        <h1 className="text-2xl lg:text-3xl font-bold text-gray-800 mb-2">Kosakata Bahasa Arab</h1>
+        <p className="text-sm lg:text-base text-gray-600">Pelajari kosakata dengan kategori dan tingkat kesulitan</p>
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="bg-white rounded-xl shadow-lg p-4 lg:p-6 mb-6 lg:mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 lg:gap-4">
           {/* Search */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -58,7 +58,7 @@ export default function Vocabulary({ updateProgress }: VocabularyProps) {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Cari dalam Arab, Indonesia, atau transliterasi..."
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="w-full px-3 lg:px-4 py-2 text-sm lg:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
             />
           </div>
 
@@ -71,7 +71,7 @@ export default function Vocabulary({ updateProgress }: VocabularyProps) {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="w-full px-3 lg:px-4 py-2 text-sm lg:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
             >
               <option value="all">Semua Kategori</option>
               {vocabularyCategories.map(cat => (
@@ -91,7 +91,7 @@ export default function Vocabulary({ updateProgress }: VocabularyProps) {
             <select
               value={selectedLevel}
               onChange={(e) => setSelectedLevel(e.target.value as any)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="w-full px-3 lg:px-4 py-2 text-sm lg:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
             >
               <option value="all">Semua Tingkat</option>
               <option value="beginner">Pemula</option>
@@ -101,22 +101,22 @@ export default function Vocabulary({ updateProgress }: VocabularyProps) {
           </div>
         </div>
 
-        <div className="mt-4 text-sm text-gray-600">
+        <div className="mt-4 text-xs lg:text-sm text-gray-600">
           Menampilkan {filteredVocabulary.length} dari {vocabulary.length} kata
         </div>
       </div>
 
       {/* Category Cards */}
       {selectedCategory === 'all' && searchTerm === '' && (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 lg:gap-4 mb-6 lg:mb-8">
           {vocabularyCategories.slice(0, 10).map(cat => (
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
-              className="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow text-center"
+              className="bg-white rounded-lg shadow-md p-3 lg:p-4 hover:shadow-lg transition-shadow text-center min-h-[96px] active:scale-95"
             >
-              <div className="text-3xl mb-2">{cat.icon}</div>
-              <h3 className="font-semibold text-sm">{cat.name}</h3>
+              <div className="text-2xl lg:text-3xl mb-2">{cat.icon}</div>
+              <h3 className="font-semibold text-xs lg:text-sm">{cat.name}</h3>
               <p className="text-xs text-gray-600">{cat.wordCount} kata</p>
             </button>
           ))}
@@ -124,7 +124,7 @@ export default function Vocabulary({ updateProgress }: VocabularyProps) {
       )}
 
       {/* Vocabulary Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
         {filteredVocabulary.map((word, index) => (
           <motion.div
             key={word.id}
@@ -134,30 +134,30 @@ export default function Vocabulary({ updateProgress }: VocabularyProps) {
             className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
           >
             {/* Word Header */}
-            <div className="bg-gradient-to-r from-indigo-500 to-purple-600 p-6 text-white">
+            <div className="bg-gradient-to-r from-indigo-500 to-purple-600 p-4 lg:p-6 text-white">
               <div className="flex items-start justify-between mb-2">
                 <div className="flex-1">
-                  <p className="text-4xl arabic-text mb-2">{word.arabic}</p>
-                  <p className="text-sm opacity-90">{word.transliteration}</p>
+                  <p className="text-3xl lg:text-4xl arabic-text mb-2">{word.arabic}</p>
+                  <p className="text-xs lg:text-sm opacity-90">{word.transliteration}</p>
                 </div>
                 <button
                   onClick={() => handleLearnWord(word.id)}
-                  className="p-2 bg-white/20 rounded-lg hover:bg-white/30 transition-colors"
+                  className="p-2 bg-white/20 rounded-lg hover:bg-white/30 transition-colors min-w-[44px] min-h-[44px] active:scale-95"
                 >
-                  <Volume2 className="w-5 h-5" />
+                  <Volume2 className="w-4 h-4 lg:w-5 lg:h-5" />
                 </button>
               </div>
             </div>
 
             {/* Word Details */}
-            <div className="p-6">
+            <div className="p-4 lg:p-6">
               <div className="mb-4">
-                <p className="text-lg font-semibold text-gray-800">{word.indonesian}</p>
-                <p className="text-sm text-gray-600">{word.english}</p>
+                <p className="text-base lg:text-lg font-semibold text-gray-800">{word.indonesian}</p>
+                <p className="text-xs lg:text-sm text-gray-600">{word.english}</p>
               </div>
 
               {/* Metadata */}
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-2 lg:gap-3 mb-4 flex-wrap">
                 <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">
                   {word.partOfSpeech}
                 </span>
@@ -174,12 +174,12 @@ export default function Vocabulary({ updateProgress }: VocabularyProps) {
               {/* Example */}
               {word.example && (
                 <div className="bg-gray-50 rounded-lg p-3">
-                  <p className="text-sm font-medium text-gray-700 mb-1">Contoh:</p>
-                  <p className="text-lg arabic-text text-indigo-600">{word.example.arabic}</p>
+                  <p className="text-xs lg:text-sm font-medium text-gray-700 mb-1">Contoh:</p>
+                  <p className="text-base lg:text-lg arabic-text text-indigo-600">{word.example.arabic}</p>
                   <p className="text-xs text-gray-600 mt-1">
                     {word.example.transliteration}
                   </p>
-                  <p className="text-sm text-gray-700 mt-1">
+                  <p className="text-xs lg:text-sm text-gray-700 mt-1">
                     "{word.example.indonesian}"
                   </p>
                 </div>
@@ -199,8 +199,8 @@ export default function Vocabulary({ updateProgress }: VocabularyProps) {
       {/* Empty State */}
       {filteredVocabulary.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-gray-500 text-lg">Tidak ada kata yang ditemukan</p>
-          <p className="text-gray-400 mt-2">Coba ubah filter pencarian Anda</p>
+          <p className="text-gray-500 text-base lg:text-lg">Tidak ada kata yang ditemukan</p>
+          <p className="text-gray-400 mt-2 text-sm lg:text-base">Coba ubah filter pencarian Anda</p>
         </div>
       )}
     </div>

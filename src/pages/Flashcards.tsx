@@ -107,17 +107,17 @@ export default function Flashcards({ updateProgress }: FlashcardsProps) {
 
   if (!session) {
     return (
-      <div>
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">Flashcards</h1>
-          <p className="text-gray-600">Latih hafalan kosakata dengan sistem kartu pintar</p>
+      <div className="p-4 lg:p-6">
+        <div className="mb-6 lg:mb-8">
+          <h1 className="text-2xl lg:text-3xl font-bold text-gray-800 mb-2">Flashcards</h1>
+          <p className="text-sm lg:text-base text-gray-600">Latih hafalan kosakata dengan sistem kartu pintar</p>
         </div>
 
         {/* Session Setup */}
-        <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-          <h2 className="text-xl font-bold mb-6">Atur Sesi Flashcard</h2>
+        <div className="bg-white rounded-xl shadow-lg p-4 lg:p-8 mb-6 lg:mb-8">
+          <h2 className="text-lg lg:text-xl font-bold mb-4 lg:mb-6">Atur Sesi Flashcard</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Kategori
@@ -125,7 +125,7 @@ export default function Flashcards({ updateProgress }: FlashcardsProps) {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 lg:px-4 py-2 lg:py-3 text-sm lg:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
               >
                 <option value="all">Semua Kategori</option>
                 {vocabularyCategories.map(cat => (
@@ -143,7 +143,7 @@ export default function Flashcards({ updateProgress }: FlashcardsProps) {
               <select
                 value={sessionSize}
                 onChange={(e) => setSessionSize(Number(e.target.value))}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 lg:px-4 py-2 lg:py-3 text-sm lg:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
               >
                 <option value={5}>5 kartu</option>
                 <option value={10}>10 kartu</option>
@@ -156,34 +156,34 @@ export default function Flashcards({ updateProgress }: FlashcardsProps) {
           
           <button
             onClick={startSession}
-            className="mt-6 w-full md:w-auto px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all flex items-center justify-center gap-2"
+            className="mt-4 lg:mt-6 w-full md:w-auto px-6 lg:px-8 py-3 text-sm lg:text-base bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all flex items-center justify-center gap-2 min-h-[44px] active:scale-95"
           >
-            <Shuffle className="w-5 h-5" />
+            <Shuffle className="w-4 h-4 lg:w-5 lg:h-5" />
             Mulai Sesi Flashcard
           </button>
         </div>
 
         {/* Statistics */}
         {sessionHistory.length > 0 && (
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <h2 className="text-xl font-bold mb-6">Statistik Pembelajaran</h2>
+          <div className="bg-white rounded-xl shadow-lg p-4 lg:p-8">
+            <h2 className="text-lg lg:text-xl font-bold mb-4 lg:mb-6">Statistik Pembelajaran</h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-              <div className="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-lg">
-                <p className="text-sm text-green-600 mb-1">Total Sesi</p>
-                <p className="text-2xl font-bold text-green-700">{sessionHistory.length}</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 lg:gap-6 mb-4 lg:mb-6">
+              <div className="bg-gradient-to-br from-green-50 to-green-100 p-3 lg:p-4 rounded-lg">
+                <p className="text-xs lg:text-sm text-green-600 mb-1">Total Sesi</p>
+                <p className="text-xl lg:text-2xl font-bold text-green-700">{sessionHistory.length}</p>
               </div>
               
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg">
-                <p className="text-sm text-blue-600 mb-1">Total Kartu</p>
-                <p className="text-2xl font-bold text-blue-700">
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-3 lg:p-4 rounded-lg">
+                <p className="text-xs lg:text-sm text-blue-600 mb-1">Total Kartu</p>
+                <p className="text-xl lg:text-2xl font-bold text-blue-700">
                   {sessionHistory.reduce((acc, h) => acc + h.total, 0)}
                 </p>
               </div>
               
-              <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-4 rounded-lg">
-                <p className="text-sm text-purple-600 mb-1">Rata-rata Akurasi</p>
-                <p className="text-2xl font-bold text-purple-700">
+              <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-3 lg:p-4 rounded-lg">
+                <p className="text-xs lg:text-sm text-purple-600 mb-1">Rata-rata Akurasi</p>
+                <p className="text-xl lg:text-2xl font-bold text-purple-700">
                   {Math.round(
                     (sessionHistory.reduce((acc, h) => acc + h.correct, 0) / 
                      sessionHistory.reduce((acc, h) => acc + h.total, 0)) * 100
@@ -193,17 +193,17 @@ export default function Flashcards({ updateProgress }: FlashcardsProps) {
             </div>
             
             <div className="border-t pt-4">
-              <h3 className="font-semibold mb-3">Riwayat Sesi Terakhir</h3>
-              <div className="space-y-2">
+              <h3 className="text-sm lg:text-base font-semibold mb-3">Riwayat Sesi Terakhir</h3>
+              <div className="space-y-2 overflow-x-auto">
                 {sessionHistory.slice(-5).reverse().map((history, index) => (
-                  <div key={index} className="flex items-center justify-between bg-gray-50 p-3 rounded-lg">
-                    <span className="text-sm text-gray-600">
+                  <div key={index} className="flex items-center justify-between bg-gray-50 p-2 lg:p-3 rounded-lg min-w-[280px]">
+                    <span className="text-xs lg:text-sm text-gray-600">
                       {new Date(history.date).toLocaleDateString('id-ID')}
                     </span>
-                    <span className="font-semibold">
+                    <span className="text-xs lg:text-sm font-semibold">
                       {history.correct}/{history.total} benar
                     </span>
-                    <span className={`text-sm font-medium ${
+                    <span className={`text-xs lg:text-sm font-medium ${
                       (history.correct / history.total) >= 0.8 ? 'text-green-600' :
                       (history.correct / history.total) >= 0.6 ? 'text-yellow-600' :
                       'text-red-600'
@@ -224,42 +224,42 @@ export default function Flashcards({ updateProgress }: FlashcardsProps) {
     const accuracy = Math.round((session.correct / session.cards.length) * 100);
     
     return (
-      <div className="min-h-[60vh] flex items-center justify-center">
+      <div className="min-h-[60vh] flex items-center justify-center p-4">
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full text-center"
+          className="bg-white rounded-2xl shadow-2xl p-6 lg:p-8 max-w-md w-full text-center"
         >
-          <Award className="w-20 h-20 mx-auto text-yellow-500 mb-4" />
-          <h2 className="text-2xl font-bold mb-2">Sesi Selesai!</h2>
+          <Award className="w-16 h-16 lg:w-20 lg:h-20 mx-auto text-yellow-500 mb-4" />
+          <h2 className="text-xl lg:text-2xl font-bold mb-2">Sesi Selesai!</h2>
           
-          <div className="my-6">
-            <p className="text-5xl font-bold text-indigo-600 mb-2">{accuracy}%</p>
-            <p className="text-gray-600">Tingkat Akurasi</p>
+          <div className="my-4 lg:my-6">
+            <p className="text-4xl lg:text-5xl font-bold text-indigo-600 mb-2">{accuracy}%</p>
+            <p className="text-sm lg:text-base text-gray-600">Tingkat Akurasi</p>
           </div>
           
-          <div className="grid grid-cols-2 gap-4 mb-6">
+          <div className="grid grid-cols-2 gap-3 lg:gap-4 mb-4 lg:mb-6">
             <div className="bg-green-50 p-3 rounded-lg">
-              <p className="text-2xl font-bold text-green-600">{session.correct}</p>
-              <p className="text-sm text-green-700">Benar</p>
+              <p className="text-xl lg:text-2xl font-bold text-green-600">{session.correct}</p>
+              <p className="text-xs lg:text-sm text-green-700">Benar</p>
             </div>
             <div className="bg-red-50 p-3 rounded-lg">
-              <p className="text-2xl font-bold text-red-600">{session.incorrect}</p>
-              <p className="text-sm text-red-700">Salah</p>
+              <p className="text-xl lg:text-2xl font-bold text-red-600">{session.incorrect}</p>
+              <p className="text-xs lg:text-sm text-red-700">Salah</p>
             </div>
           </div>
           
           <div className="space-y-3">
             <button
               onClick={startSession}
-              className="w-full px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-colors flex items-center justify-center gap-2"
+              className="w-full px-4 lg:px-6 py-3 text-sm lg:text-base bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-colors flex items-center justify-center gap-2 min-h-[44px] active:scale-95"
             >
-              <RotateCw className="w-5 h-5" />
+              <RotateCw className="w-4 h-4 lg:w-5 lg:h-5" />
               Ulangi Sesi
             </button>
             <button
               onClick={resetSession}
-              className="w-full px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
+              className="w-full px-4 lg:px-6 py-3 text-sm lg:text-base bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors min-h-[44px] active:scale-95"
             >
               Sesi Baru
             </button>
@@ -273,24 +273,24 @@ export default function Flashcards({ updateProgress }: FlashcardsProps) {
   const progress = ((session.currentIndex + 1) / session.cards.length) * 100;
 
   return (
-    <div>
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">Sesi Flashcard</h1>
-        <div className="flex items-center gap-6">
-          <p className="text-gray-600">
+    <div className="p-4 lg:p-6">
+      <div className="mb-6 lg:mb-8">
+        <h1 className="text-2xl lg:text-3xl font-bold text-gray-800 mb-2">Sesi Flashcard</h1>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6">
+          <p className="text-sm lg:text-base text-gray-600">
             Kartu {session.currentIndex + 1} dari {session.cards.length}
           </p>
           <div className="flex items-center gap-2">
-            <Check className="w-5 h-5 text-green-600" />
-            <span className="font-semibold text-green-600">{session.correct}</span>
-            <X className="w-5 h-5 text-red-600 ml-3" />
-            <span className="font-semibold text-red-600">{session.incorrect}</span>
+            <Check className="w-4 h-4 lg:w-5 lg:h-5 text-green-600" />
+            <span className="text-sm lg:text-base font-semibold text-green-600">{session.correct}</span>
+            <X className="w-4 h-4 lg:w-5 lg:h-5 text-red-600 ml-3" />
+            <span className="text-sm lg:text-base font-semibold text-red-600">{session.incorrect}</span>
           </div>
         </div>
       </div>
 
       {/* Progress Bar */}
-      <div className="bg-gray-200 rounded-full h-2 mb-8">
+      <div className="bg-gray-200 rounded-full h-2 mb-6 lg:mb-8">
         <div
           className="bg-gradient-to-r from-indigo-500 to-purple-600 h-2 rounded-full transition-all duration-300"
           style={{ width: `${progress}%` }}
@@ -306,27 +306,27 @@ export default function Flashcards({ updateProgress }: FlashcardsProps) {
             animate={{ rotateY: isFlipped ? 180 : 0 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.4 }}
-            className="relative h-96 preserve-3d cursor-pointer"
+            className="relative h-80 lg:h-96 preserve-3d cursor-pointer"
             onClick={flipCard}
           >
             {/* Front Side */}
             <div className={`absolute inset-0 ${isFlipped ? 'invisible' : ''}`}>
-              <div className="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-2xl p-8 h-full flex flex-col items-center justify-center text-white">
-                <p className="text-6xl arabic-text mb-4">{currentCard.arabic}</p>
-                <p className="text-xl opacity-90">{currentCard.transliteration}</p>
+              <div className="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-2xl p-6 lg:p-8 h-full flex flex-col items-center justify-center text-white">
+                <p className="text-4xl lg:text-6xl arabic-text mb-4">{currentCard.arabic}</p>
+                <p className="text-base lg:text-xl opacity-90">{currentCard.transliteration}</p>
                 
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
                     speakArabic(currentCard.arabic);
                   }}
-                  className="mt-6 p-3 bg-white/20 rounded-lg hover:bg-white/30 transition-colors"
+                  className="mt-4 lg:mt-6 p-3 bg-white/20 rounded-lg hover:bg-white/30 transition-colors min-w-[44px] min-h-[44px] active:scale-95"
                 >
-                  <Volume2 className="w-6 h-6" />
+                  <Volume2 className="w-5 h-5 lg:w-6 lg:h-6" />
                 </button>
                 
-                <p className="absolute bottom-4 text-sm opacity-70 flex items-center gap-2">
-                  <Eye className="w-4 h-4" />
+                <p className="absolute bottom-3 lg:bottom-4 text-xs lg:text-sm opacity-70 flex items-center gap-2">
+                  <Eye className="w-3 h-3 lg:w-4 lg:h-4" />
                   Klik untuk melihat arti
                 </p>
               </div>
@@ -334,19 +334,19 @@ export default function Flashcards({ updateProgress }: FlashcardsProps) {
 
             {/* Back Side */}
             <div className={`absolute inset-0 ${!isFlipped ? 'invisible' : ''}`} style={{ transform: 'rotateY(180deg)' }}>
-              <div className="bg-white rounded-2xl shadow-2xl p-8 h-full flex flex-col items-center justify-center">
-                <p className="text-3xl font-bold text-gray-800 mb-2">{currentCard.indonesian}</p>
-                <p className="text-xl text-gray-600 mb-4">{currentCard.english}</p>
+              <div className="bg-white rounded-2xl shadow-2xl p-6 lg:p-8 h-full flex flex-col items-center justify-center">
+                <p className="text-2xl lg:text-3xl font-bold text-gray-800 mb-2">{currentCard.indonesian}</p>
+                <p className="text-base lg:text-xl text-gray-600 mb-4">{currentCard.english}</p>
                 
                 {currentCard.example && (
-                  <div className="bg-gray-50 rounded-lg p-4 mt-4">
-                    <p className="text-xl arabic-text text-indigo-600">{currentCard.example.arabic}</p>
-                    <p className="text-sm text-gray-600 mt-2">{currentCard.example.indonesian}</p>
+                  <div className="bg-gray-50 rounded-lg p-3 lg:p-4 mt-4 max-w-full">
+                    <p className="text-base lg:text-xl arabic-text text-indigo-600">{currentCard.example.arabic}</p>
+                    <p className="text-xs lg:text-sm text-gray-600 mt-2">{currentCard.example.indonesian}</p>
                   </div>
                 )}
                 
-                <p className="absolute bottom-4 text-sm text-gray-500 flex items-center gap-2">
-                  <EyeOff className="w-4 h-4" />
+                <p className="absolute bottom-3 lg:bottom-4 text-xs lg:text-sm text-gray-500 flex items-center gap-2">
+                  <EyeOff className="w-3 h-3 lg:w-4 lg:h-4" />
                   Klik untuk kembali
                 </p>
               </div>
@@ -359,20 +359,20 @@ export default function Flashcards({ updateProgress }: FlashcardsProps) {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex gap-4 justify-center mt-8"
+            className="flex gap-3 lg:gap-4 justify-center mt-6 lg:mt-8"
           >
             <button
               onClick={() => handleAnswer(false)}
-              className="px-8 py-3 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600 transition-colors flex items-center gap-2"
+              className="px-6 lg:px-8 py-3 text-sm lg:text-base bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600 transition-colors flex items-center gap-2 min-h-[44px] active:scale-95"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 lg:w-5 lg:h-5" />
               Salah
             </button>
             <button
               onClick={() => handleAnswer(true)}
-              className="px-8 py-3 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition-colors flex items-center gap-2"
+              className="px-6 lg:px-8 py-3 text-sm lg:text-base bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition-colors flex items-center gap-2 min-h-[44px] active:scale-95"
             >
-              <Check className="w-5 h-5" />
+              <Check className="w-4 h-4 lg:w-5 lg:h-5" />
               Benar
             </button>
           </motion.div>
