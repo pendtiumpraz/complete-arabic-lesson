@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generate Images for Arabic Learning App</title>
+</head>
+<body>
+    <h1>Arabic Learning App Images</h1>
+    
+    <h2>Favicon (32x32)</h2>
+    <canvas id="favicon" width="32" height="32"></canvas>
+    <br>
+    <a id="favicon-download" download="favicon.png">Download Favicon</a>
+    
+    <h2>Open Graph Image (1200x630)</h2>
+    <canvas id="og-image" width="1200" height="630"></canvas>
+    <br>
+    <a id="og-download" download="og-image.png">Download OG Image</a>
+    
+    <script>
+        // Create Favicon
+        const faviconCanvas = document.getElementById('favicon');
+        const faviconCtx = faviconCanvas.getContext('2d');
+        
+        // Purple gradient background
+        const faviconGradient = faviconCtx.createLinearGradient(0, 0, 32, 32);
+        faviconGradient.addColorStop(0, '#6366F1');
+        faviconGradient.addColorStop(1, '#8B5CF6');
+        faviconCtx.fillStyle = faviconGradient;
+        faviconCtx.fillRect(0, 0, 32, 32);
+        
+        // White Arabic letter Alif
+        faviconCtx.fillStyle = 'white';
+        faviconCtx.font = 'bold 24px Arial';
+        faviconCtx.textAlign = 'center';
+        faviconCtx.textBaseline = 'middle';
+        faviconCtx.fillText('ا', 16, 18);
+        
+        // Set download link
+        faviconCanvas.toBlob((blob) => {
+            const url = URL.createObjectURL(blob);
+            document.getElementById('favicon-download').href = url;
+        });
+        
+        // Create OG Image
+        const ogCanvas = document.getElementById('og-image');
+        const ogCtx = ogCanvas.getContext('2d');
+        
+        // Gradient background
+        const ogGradient = ogCtx.createLinearGradient(0, 0, 1200, 630);
+        ogGradient.addColorStop(0, '#4F46E5');
+        ogGradient.addColorStop(0.5, '#6366F1');
+        ogGradient.addColorStop(1, '#8B5CF6');
+        ogCtx.fillStyle = ogGradient;
+        ogCtx.fillRect(0, 0, 1200, 630);
+        
+        // Pattern overlay
+        ogCtx.globalAlpha = 0.1;
+        ogCtx.strokeStyle = 'white';
+        ogCtx.lineWidth = 2;
+        for (let i = 0; i < 12; i++) {
+            for (let j = 0; j < 7; j++) {
+                ogCtx.beginPath();
+                ogCtx.arc(100 + i * 100, 90 + j * 90, 30, 0, Math.PI * 2);
+                ogCtx.stroke();
+            }
+        }
+        ogCtx.globalAlpha = 1;
+        
+        // White text
+        ogCtx.fillStyle = 'white';
+        
+        // Arabic title
+        ogCtx.font = 'bold 120px Arial';
+        ogCtx.textAlign = 'center';
+        ogCtx.fillText('تعلم العربية', 600, 200);
+        
+        // App name
+        ogCtx.font = 'bold 60px Arial';
+        ogCtx.fillText('Belajar Bahasa Arab', 600, 320);
+        
+        // Subtitle
+        ogCtx.font = '36px Arial';
+        ogCtx.fillText('Platform Pembelajaran Interaktif', 600, 380);
+        
+        // Features
+        ogCtx.font = '28px Arial';
+        ogCtx.fillText('Huruf Hijaiyah • Kosakata • Tashrif • Nahwu', 600, 460);
+        ogCtx.fillText('Flashcards • AI Tutor • Gamifikasi', 600, 500);
+        
+        // Set download link
+        ogCanvas.toBlob((blob) => {
+            const url = URL.createObjectURL(blob);
+            document.getElementById('og-download').href = url;
+        });
+    </script>
+</body>
+</html>
