@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import { arabicLetters } from '../data/arabicLetters';
 import { vocabulary } from '../data/vocabulary';
-import { nahwuTopics } from '../data/nahwu';
 import { 
   Target, 
   Trophy, 
   Star, 
   Heart, 
-  Clock, 
   CheckCircle, 
   XCircle,
   Award,
@@ -45,7 +43,7 @@ export default function Practice({ updateProgress, userProgress }: PracticeProps
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(3);
   const [streak, setStreak] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(30);
+  // const [timeLeft, setTimeLeft] = useState(30); // Reserved for future timer feature
   const [quizComplete, setQuizComplete] = useState(false);
 
   const practiceMode = [
@@ -75,7 +73,7 @@ export default function Practice({ updateProgress, userProgress }: PracticeProps
     }
   ];
 
-  const generateQuestions = (mode: string): Question[] => {
+  const generateQuestions = (_mode: string): Question[] => {
     const questions: Question[] = [];
     
     // Generate letter recognition questions

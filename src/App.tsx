@@ -12,8 +12,16 @@ import Progress from './pages/Progress';
 import AudioTest from './pages/AudioTest';
 import Layout from './components/Layout';
 
+interface UserProgress {
+  level: string;
+  completedLessons: string[];
+  points: number;
+  streak: number;
+  lastActive: string;
+}
+
 function App() {
-  const [userProgress, setUserProgress] = useState(() => {
+  const [userProgress, setUserProgress] = useState<UserProgress>(() => {
     const saved = localStorage.getItem('arabicLearningProgress');
     return saved ? JSON.parse(saved) : {
       level: 'beginner',
@@ -29,7 +37,7 @@ function App() {
   }, [userProgress]);
 
   const updateProgress = (lessonId: string, points: number) => {
-    setUserProgress(prev => ({
+    setUserProgress((prev) => ({
       ...prev,
       completedLessons: [...new Set([...prev.completedLessons, lessonId])],
       points: prev.points + points,

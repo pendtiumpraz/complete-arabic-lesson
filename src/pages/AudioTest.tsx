@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Volume2, AlertCircle, CheckCircle, Info } from 'lucide-react';
+import { AlertCircle, CheckCircle, Info } from 'lucide-react';
 import { arabicSpeech } from '../utils/speech';
 import AudioButton from '../components/AudioButton';
 

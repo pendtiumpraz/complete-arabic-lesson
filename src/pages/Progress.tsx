@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { 
   Trophy, 
   TrendingUp, 
@@ -45,7 +45,7 @@ interface Statistics {
 
 export default function Progress({ userProgress }: ProgressProps) {
   const [selectedTab, setSelectedTab] = useState<'overview' | 'achievements' | 'statistics'>('overview');
-  const [weeklyData, setWeeklyData] = useState<number[]>([45, 52, 38, 65, 72, 88, 95]);
+  const [weeklyData] = useState<number[]>([45, 52, 38, 65, 72, 88, 95]);
 
   const achievements: Achievement[] = [
     {

@@ -3,7 +3,6 @@ import {
   BookOpen, 
   Languages, 
   GraduationCap, 
-  Brain,
   Home,
   Trophy,
   MessageSquare,
@@ -11,7 +10,7 @@ import {
   Layers,
   BookMarked
 } from 'lucide-react';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 interface LayoutProps {
   children: ReactNode;

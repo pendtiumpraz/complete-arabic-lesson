@@ -8,7 +8,7 @@ interface TashrifProps {
 }
 
 export default function Tashrif({ updateProgress }: TashrifProps) {
-  const [selectedForm, setSelectedForm] = useState(verbForms[0]);
+  // const [selectedForm, setSelectedForm] = useState(verbForms[0]); // Reserved for form selection feature
   const [selectedPattern, setSelectedPattern] = useState(verbPatterns[0]);
   const [activeTab, setActiveTab] = useState<'patterns' | 'forms' | 'tables'>('patterns');
 
