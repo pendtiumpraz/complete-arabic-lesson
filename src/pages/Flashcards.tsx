@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { vocabulary, vocabularyCategories } from '../data/vocabulary';
+import { vocabulary, vocabularyCategories } from '../data/vocabularyComplete';
 import { Volume2, RotateCw, Check, X, Eye, EyeOff, Shuffle, Award } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 

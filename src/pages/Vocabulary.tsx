@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { vocabulary, vocabularyCategories } from '../data/vocabulary';
+import { vocabulary, vocabularyCategories, totalVocabularyCount } from '../data/vocabularyComplete';
 import { Volume2, Search, Filter, BookOpen } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -41,7 +41,7 @@ export default function Vocabulary({ updateProgress }: VocabularyProps) {
     <div className="p-4 lg:p-6">
       <div className="mb-6 lg:mb-8">
         <h1 className="text-2xl lg:text-3xl font-bold text-gray-800 mb-2">Kosakata Bahasa Arab</h1>
-        <p className="text-sm lg:text-base text-gray-600">Pelajari kosakata dengan kategori dan tingkat kesulitan</p>
+        <p className="text-sm lg:text-base text-gray-600">Pelajari {totalVocabularyCount}+ kosakata dengan kategori dan tingkat kesulitan</p>
       </div>
 
       {/* Filters */}
