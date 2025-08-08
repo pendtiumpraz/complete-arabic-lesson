@@ -1,6 +1,7 @@
-// Complete vocabulary system with 1000+ words
+// Complete vocabulary system with 1500+ words
 import { expandedVocabularyWords } from './expandedVocabulary';
 import { expandedVocabularyWords2 } from './expandedVocabulary2';
+import { expandedVocabularyWords3 } from './expandedVocabulary3';
 
 export interface VocabularyWord {
   id: string;
@@ -205,6 +206,86 @@ export const vocabularyCategories: VocabularyCategory[] = [
     icon: "📍",
     description: "Kata depan dan penghubung",
     wordCount: 30
+  },
+  {
+    id: "days_months",
+    name: "Hari & Bulan",
+    nameAr: "الأيام والشهور",
+    icon: "📅",
+    description: "Nama hari dan bulan",
+    wordCount: 50
+  },
+  {
+    id: "fruits",
+    name: "Buah-buahan",
+    nameAr: "الفواكه",
+    icon: "🍎",
+    description: "Berbagai jenis buah",
+    wordCount: 50
+  },
+  {
+    id: "vegetables",
+    name: "Sayuran",
+    nameAr: "الخضروات",
+    icon: "🥬",
+    description: "Berbagai jenis sayuran",
+    wordCount: 50
+  },
+  {
+    id: "kitchen",
+    name: "Peralatan Dapur",
+    nameAr: "أدوات المطبخ",
+    icon: "🍴",
+    description: "Alat-alat dapur",
+    wordCount: 40
+  },
+  {
+    id: "stationery",
+    name: "Alat Tulis",
+    nameAr: "القرطاسية",
+    icon: "✏️",
+    description: "Peralatan tulis dan kantor",
+    wordCount: 30
+  },
+  {
+    id: "countries",
+    name: "Negara & Kebangsaan",
+    nameAr: "البلدان والجنسيات",
+    icon: "🌍",
+    description: "Nama negara dan kebangsaan",
+    wordCount: 60
+  },
+  {
+    id: "shapes",
+    name: "Bentuk & Ukuran",
+    nameAr: "الأشكال والأحجام",
+    icon: "⭕",
+    description: "Bentuk geometri dan ukuran",
+    wordCount: 40
+  },
+  {
+    id: "directions",
+    name: "Arah & Posisi",
+    nameAr: "الاتجاهات والمواضع",
+    icon: "🧭",
+    description: "Arah mata angin dan posisi",
+    wordCount: 40
+  },
+  {
+    id: "hobbies",
+    name: "Hobi & Kegiatan",
+    nameAr: "الهوايات والأنشطة",
+    icon: "🎨",
+    description: "Berbagai hobi dan aktivitas",
+    wordCount: 50
+  },
+  {
+    id: "buildings",
+    name: "Bangunan & Arsitektur",
+    nameAr: "المباني والعمارة",
+    icon: "🏢",
+    description: "Jenis-jenis bangunan",
+    wordCount: 40
   }
 ];
 
@@ -673,10 +754,11 @@ const additionalVocabulary: VocabularyWord[] = [
 export const vocabulary: VocabularyWord[] = [
   ...expandedVocabularyWords,
   ...expandedVocabularyWords2,
+  ...expandedVocabularyWords3,
   ...additionalVocabulary
 ];
 
-// Total vocabulary count: 1000+ words
+// Total vocabulary count: 1500+ words
 export const totalVocabularyCount = vocabulary.length;
 
 // Helper function to get words by category
