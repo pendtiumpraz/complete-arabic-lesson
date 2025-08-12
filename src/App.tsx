@@ -10,6 +10,10 @@ import Practice from './pages/Practice';
 import AITutor from './pages/AITutor';
 import Progress from './pages/Progress';
 import AudioTest from './pages/AudioTest';
+import DailyConversations from './pages/DailyConversations';
+import ShortStories from './pages/ShortStories';
+import IdiomsProverbs from './pages/IdiomsProverbs';
+import Prayers from './pages/Prayers';
 import Layout from './components/Layout';
 
 interface UserProgress {
@@ -59,6 +63,10 @@ function App() {
           <Route path="/ai-tutor" element={<AITutor />} />
           <Route path="/progress" element={<Progress userProgress={userProgress} />} />
           <Route path="/audio-test" element={<AudioTest />} />
+          <Route path="/daily-conversations" element={<DailyConversations updateProgress={updateProgress} />} />
+          <Route path="/short-stories" element={<ShortStories updateProgress={updateProgress} />} />
+          <Route path="/idioms-proverbs" element={<IdiomsProverbs updateProgress={updateProgress} />} />
+          <Route path="/prayers" element={<Prayers updateProgress={updateProgress} />} />
         </Routes>
       </Layout>
     </Router>

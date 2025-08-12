@@ -77,7 +77,38 @@ Platform pembelajaran bahasa Arab komprehensif dengan fitur interaktif, gamifika
 - Quick questions untuk memulai
 - Available 24/7
 
-#### 8. **Progress Tracking**
+#### 8. **Percakapan Sehari-hari**
+- Dialog praktis untuk situasi sehari-hari
+- 10 kategori: salam, belanja, restoran, perjalanan, dll
+- Audio pronunciation untuk setiap dialog
+- 3 level kesulitan (Pemula, Menengah, Mahir)
+- Kosakata penting dari setiap percakapan
+- Catatan tata bahasa untuk pemahaman
+
+#### 9. **Cerita Pendek Arab**
+- Koleksi cerita menarik dalam bahasa Arab
+- Kategori: fabel, kehidupan sehari-hari, islami, kebijaksanaan
+- Mode baca normal dan per kalimat
+- Kosakata penting dengan audio
+- Pesan moral dan hikmah
+- Tingkat kesulitan bertahap
+
+#### 10. **Idiom & Peribahasa**
+- Ungkapan idiomatik dan peribahasa Arab
+- Terjemahan literal dan makna sebenarnya
+- Contoh penggunaan dalam kalimat
+- Penjelasan konteks dan situasi penggunaan
+- Audio pronunciation yang jelas
+
+#### 11. **Doa-doa Harian**
+- 25+ doa pilihan untuk kehidupan sehari-hari
+- 10 kategori: pagi/petang, makan, perjalanan, ibadah, dll
+- Teks Arab, transliterasi, dan terjemahan
+- Penjelasan makna dan hikmah
+- Manfaat dan keutamaan setiap doa
+- Sumber dari hadits yang shahih
+
+#### 12. **Progress Tracking**
 - Dashboard progress pembelajaran
 - Statistik detail (poin, streak, waktu belajar)
 - Achievement system dengan badges
@@ -173,6 +204,10 @@ arabic-learning-app/
 │   │   ├── Flashcards.tsx    # Sistem flashcard
 │   │   ├── Tashrif.tsx       # Konjugasi kata kerja
 │   │   ├── Nahwu.tsx         # Tata bahasa
+│   │   ├── DailyConversations.tsx # Percakapan sehari-hari
+│   │   ├── ShortStories.tsx      # Cerita pendek Arab
+│   │   ├── IdiomsProverbs.tsx    # Idiom & peribahasa
+│   │   ├── Prayers.tsx           # Doa-doa harian
 │   │   ├── Practice.tsx      # Latihan & kuis
 │   │   ├── AITutor.tsx       # Chat dengan AI
 │   │   ├── Progress.tsx      # Tracking progress
@@ -182,7 +217,11 @@ arabic-learning-app/
 │   │   ├── arabicLetters.ts  # Data huruf & harakat
 │   │   ├── vocabulary.ts     # Database kosakata
 │   │   ├── tashrif.ts       # Data konjugasi
-│   │   └── nahwu.ts         # Materi tata bahasa
+│   │   ├── nahwu.ts         # Materi tata bahasa
+│   │   ├── dailyConversations.ts # Dialog sehari-hari
+│   │   ├── shortStories.ts       # Cerita pendek Arab
+│   │   ├── idiomsProverbs.ts     # Idiom & peribahasa
+│   │   └── prayers.ts            # Doa-doa harian
 │   │
 │   ├── utils/             # Utility functions
 │   │   └── speech.ts      # Text-to-speech handler
@@ -248,10 +287,10 @@ git push origin feature/NamaFitur
 
 #### 📚 Content Additions
 - [ ] Lebih banyak kosakata (target 1000+ kata)
-- [ ] Percakapan sehari-hari (dialog)
-- [ ] Cerita pendek untuk latihan membaca
-- [ ] Doa-doa harian dengan audio
-- [ ] Idiom dan peribahasa Arab
+- [x] **Percakapan sehari-hari (dialog)** ✅ 
+- [x] **Cerita pendek untuk latihan membaca** ✅ 
+- [x] **Doa-doa harian dengan audio** ✅ 
+- [x] **Idiom dan peribahasa Arab** ✅ 
 - [ ] Business Arabic module
 - [ ] Medical Arabic module
 

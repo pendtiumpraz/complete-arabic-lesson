@@ -11,7 +11,10 @@ import {
   BookMarked,
   ArrowRight,
   Star,
-  TrendingUp
+  TrendingUp,
+  Quote,
+  Hand,
+  Users
 } from 'lucide-react';
 
 interface HomeProps {
@@ -63,6 +66,38 @@ export default function Home({ userProgress }: HomeProps) {
       icon: GraduationCap,
       href: '/nahwu',
       color: 'bg-gradient-to-br from-red-500 to-red-600',
+      progress: 0
+    },
+    {
+      title: 'Percakapan Harian',
+      description: 'Dialog praktis untuk situasi sehari-hari',
+      icon: MessageSquare,
+      href: '/daily-conversations',
+      color: 'bg-gradient-to-br from-blue-600 to-blue-700',
+      progress: 0
+    },
+    {
+      title: 'Cerita Pendek',
+      description: 'Tingkatkan kemampuan membaca dengan cerita menarik',
+      icon: BookOpen,
+      href: '/short-stories',
+      color: 'bg-gradient-to-br from-purple-600 to-purple-700',
+      progress: 0
+    },
+    {
+      title: 'Idiom & Peribahasa',
+      description: 'Ungkapan idiomatik dan peribahasa Arab',
+      icon: Quote,
+      href: '/idioms-proverbs',
+      color: 'bg-gradient-to-br from-orange-600 to-orange-700',
+      progress: 0
+    },
+    {
+      title: 'Doa-doa Harian',
+      description: 'Koleksi doa pilihan untuk kehidupan sehari-hari',
+      icon: Hand,
+      href: '/prayers',
+      color: 'bg-gradient-to-br from-teal-500 to-teal-600',
       progress: 0
     },
     {
